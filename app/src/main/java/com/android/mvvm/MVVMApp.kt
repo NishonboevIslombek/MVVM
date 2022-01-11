@@ -9,6 +9,8 @@ class MVVMApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        //starting koin dependency injection
         startKoin {
             androidContext(this@MVVMApp)
             modules(appComponent)
