@@ -81,11 +81,18 @@ dependencies {
 
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // ViewModel utilities for Compose - needed when we use Jetpack Compose
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"
+    // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    // Lifecycles only (without ViewModel or LiveData)
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
-    implementation"androidx.fragment:fragment-ktx:$fragment_version"
-    implementation"androidx.activity:activity-ktx:$activity_version"
+    // Annotation processor
+    //Many libraries use annotation processors to get rid of repetitive boilerplate code.
+    // Sometimes it is also used as an alternative to reflection, because reflection often has more
+    // runtime overhead compared to generated code.
+    //The @BindView annotation saves us from manually having to call findViewById for every view and
+    // casting it, like so:
     implementation"androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
 
     //coil
