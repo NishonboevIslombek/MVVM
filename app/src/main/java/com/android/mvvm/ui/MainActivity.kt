@@ -2,14 +2,7 @@ package com.android.mvvm.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.android.mvvm.R
-import com.android.mvvm.data.network.response.UserResponse
 import com.android.mvvm.databinding.ActivityMainBinding
 import com.android.mvvm.ui.adapter.MainRvAdapter
 import com.android.mvvm.ui.viewModel.MainViewModel

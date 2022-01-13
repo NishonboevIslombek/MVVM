@@ -11,6 +11,7 @@ class MVVMApp : Application() {
         super.onCreate()
 
         //starting koin dependency injection
+        //creating pull request
         startKoin {
             androidContext(this@MVVMApp)
             modules(appComponent)
