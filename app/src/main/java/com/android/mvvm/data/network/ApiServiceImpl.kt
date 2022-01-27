@@ -7,10 +7,16 @@ import android.net.NetworkCapabilities
 import android.os.Build
 import com.android.mvvm.data.network.response.UserResponse
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
 import retrofit2.Response
 
-class ApiServiceImpl(private val context: Context, private val api: Api) : ApiService {
+class ApiServiceImpl(
+    private val context: Context,
+    private val api: Api,
+    private val refreshTime: Long = 5000
+) : ApiService {
 
     @SuppressLint("ObsoleteSdkInt")
     override fun isNetworkConnected(): Boolean {
@@ -42,10 +48,15 @@ class ApiServiceImpl(private val context: Context, private val api: Api) : ApiSe
         return result
     }
 
-    override suspend fun getUsers(): Response<List<UserResponse.User>> {
-        return withContext(Dispatchers.IO) {
-            return@withContext api.getUsers()
+    override suspend fun getUsers(): Flow<Response<List<UserResponse.User>>> {
+        val users: Flow<Response<List<UserResponse.User>>> = flow {
+            while (true) {
+                val user = api.getUsers()
+                emit(user)
+                kotlinx.coroutines.delay(refreshTime)
+            }
         }
+        return users
     }
 
 
