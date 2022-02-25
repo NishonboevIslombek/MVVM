@@ -85,7 +85,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
-    // Lifecycles only (without ViewModel or LiveData)
+    // Lifecycles only (without ViewModel or LiveData) For LifecycleScope
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
     // Annotation processor
     //Many libraries use annotation processors to get rid of repetitive boilerplate code.

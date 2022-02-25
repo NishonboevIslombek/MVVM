@@ -5,6 +5,8 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.liveData
 import com.android.mvvm.data.network.response.UserResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -47,6 +49,16 @@ class ApiServiceImpl(private val context: Context, private val api: Api) : ApiSe
             return@withContext api.getUsers()
         }
     }
+
+//    override suspend fun getUsers(): LiveData<Response<List<UserResponse.User>>> {
+//        return withContext(Dispatchers.IO) {
+//            val user : LiveData<Response<List<UserResponse.User>>> = liveData {
+//                val data = api.getUsers()
+//                emit(data)
+//            }
+//            return@withContext user
+//        }
+//    }
 
 
 }
