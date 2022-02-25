@@ -18,6 +18,7 @@ class MainViewModel(private val api: ApiService) : KoinComponent, ViewModel() {
         MutableLiveData<List<UserResponse.User>>().also {
             loadUsers()
         }
+
     }
 
     //returns with LiveData which MutableDate is child of LiveData
