@@ -8,8 +8,8 @@ interface ApiService {
 
     fun isNetworkConnected(): Boolean
 
-//    suspend fun getUsers(): LiveData<Response<List<UserResponse.User>>>
+    suspend fun getUsers(): LiveData<Response<List<UserResponse.User>>>
 
-    suspend fun getUsers(): Response<List<UserResponse.User>>
+//    suspend fun getUsers(): Response<List<UserResponse.User>>
 
 }

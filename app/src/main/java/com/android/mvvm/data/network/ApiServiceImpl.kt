@@ -44,21 +44,21 @@ class ApiServiceImpl(private val context: Context, private val api: Api) : ApiSe
         return result
     }
 
-    override suspend fun getUsers(): Response<List<UserResponse.User>> {
-        return withContext(Dispatchers.IO) {
-            return@withContext api.getUsers()
-        }
-    }
-
-//    override suspend fun getUsers(): LiveData<Response<List<UserResponse.User>>> {
+//    override suspend fun getUsers(): Response<List<UserResponse.User>> {
 //        return withContext(Dispatchers.IO) {
-//            val user : LiveData<Response<List<UserResponse.User>>> = liveData {
-//                val data = api.getUsers()
-//                emit(data)
-//            }
-//            return@withContext user
+//            return@withContext api.getUsers()
 //        }
 //    }
+
+    override suspend fun getUsers(): LiveData<Response<List<UserResponse.User>>> {
+        return withContext(Dispatchers.IO) {
+            val user : LiveData<Response<List<UserResponse.User>>> = liveData {
+                val data = api.getUsers()
+                emit(data)
+            }
+            return@withContext user
+        }
+    }
 
 
 }

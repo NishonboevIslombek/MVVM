@@ -46,10 +46,16 @@ class MainViewModel(private val api: ApiService) : KoinComponent, ViewModel() {
 
     //this is using coroutines with viewModelScope in ViewModel class. it simplifies boilerplate code
     private fun loadUsers() {
-        viewModelScope.launch { // here
-            val response = api.getUsers();
-            if (response.isSuccessful) {
-                users.value = response.body()
+//        viewModelScope.launch { // here
+//            val response = api.getUsers();
+//            if (response.isSuccessful) {
+//                users.value = response.body()
+//            }
+//        }
+        viewModelScope.launch {
+            val response = api.getUsers().value
+            if (response!!.isSuccessful){
+            users.value = response.body()
             }
         }
     }
